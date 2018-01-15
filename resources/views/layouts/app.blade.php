@@ -39,8 +39,8 @@
                         <li><a href="/braucieni/visi">Visi braucieni</a></li>
 
                         @if ( !Auth::guest()  )
-                            <li><a href="/mani">Mani braucieni</a></li>
-                            <li><a href="/profils/mans">Mans profils</a></li>
+                            <li><a href="/braucieni/mani">Mani braucieni</a></li>
+                            <li><a href="/user/mans">Mans profils</a></li>
                         @endif
                         @if ( !Auth::guest() && Auth::user()->isAdmin() )
                             <li><a href="/admin">Admin</a></li>
@@ -79,6 +79,9 @@
             </div>
         </nav>
 
+        <div class="col-md-8 col-md-offset-2">
+            @include('messages')
+        </div>
         @yield('content')
     </div>
 

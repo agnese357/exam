@@ -15,10 +15,20 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController');
+
 Route::get('/braucieni/visi', 'BraucieniController@index');
+Route::get('/braucieni/mani', 'BraucieniController@mine');
+Route::get('braucieni/jauns', 'BraucieniController@create');
+
+
+
+Route::get('/braucieni/{id}/labot', 'BraucieniController@edit');
 Route::get('/braucieni/{id}', 'BraucieniController@show');
+Route::resource('braucieni', 'BraucieniController');
+
+Route::get('/user/mans', 'ProfilsController@show');
 Route::get('/user/{id}', 'ProfilsController@index');
-Route::get('/profils/mans', 'ProfilsController@mine');
-Route::get('/mani', 'BraucieniController@mine');
+Route::resource('user', 'ProfilsController');

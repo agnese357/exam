@@ -20,9 +20,10 @@ class CreateBraucieniTable extends Migration
             $table->string('starts');
             $table->string('merkis');
             $table->decimal('cena', 5, 2);  
-            $table->datetime('izbrauksana');
+            $table->date('izbrauksana_diena');
+            $table->time('izbrauksana_laiks');
             $table->integer('pasazieru_sk');
-            $table->string('piezimes', 1000);
+            $table->string('piezimes', 1000)->nullable();
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

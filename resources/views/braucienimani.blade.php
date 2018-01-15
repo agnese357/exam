@@ -5,8 +5,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>Manis izveidotie braucieni</h2></div>
+                <div class="panel-heading">
+                    <h2>Mani izveidotie braucieni</h2>
+                </div>
                 <div class="panel-body">
+                    <a href="{{ url('/braucieni/jauns') }}"><h4>Jauns brauciens</h4></a>
                     <table style="width:100%">
                         <tr>
                             <th>Maršruts</th>
@@ -16,10 +19,11 @@
                             <th>Piezīmes</th>
                             <th>Pasažieri</th>
                             <th></th>
+                        </tr>
                         @foreach($user->braucieni as $brauc)
                             <tr>
                                 <td>{{$brauc->starts}} -> {{$brauc->merkis}}</td>
-                                <td>{{$brauc->izbrauksana}}</td>
+                                <td>{{$brauc->izbrauksana_diena}} {{$brauc->izbrauksana_laiks}}</td>
                                 <td>{{$brauc->cena}}</td>
                                 <td>{{$brauc->pasazieru_sk}}</td>
                                 <td>{{$brauc->piezimes}}</td>
@@ -30,8 +34,10 @@
 
                                     @endforeach
                                 </td>
-                                <td><a href="{{ url('braucieni', $brauc['id']) }}"> Labot</a><br>
-                                    <a href="{{ url('braucieni', $brauc['id']) }}"> Dzēst</a></td>
+                                <td><a href="/braucieni/{{$brauc->id}}/labot"> Labot</a><br>
+
+                                </td>
+
                             </tr>
                         @endforeach
                     </table>
@@ -52,14 +58,14 @@
                                 <th>Piezīmes</th>
                                 <th></th>
                                 <th></th>
-                            @foreach($user->braucieni as $brauc)
+                            @foreach($user->pasazieri as $pas)
                                 <tr>
-                                    <td>{{$brauc->starts}} -> {{$brauc->merkis}}</td>
-                                    <td>{{$brauc->izbrauksana}}</td>
-                                    <td>{{$brauc->cena}}</td>
-                                    <td>{{$brauc->pasazieru_sk}}</td>
-                                    <td>{{$brauc->piezimes}}</td>
-                                    <td><a href="{{ url('braucieni', $brauc['id']) }}">Atteikties</a></td>
+                                    <td>{{$pas->braucieni->starts}} -> {{$pas->braucieni->merkis}}</td>
+                                    <td>{{$pas->braucieni->izbrauksana_diena}} {{$pas->braucieni->izbrauksana_laiks}}</td>
+                                    <td>{{$pas->braucieni->cena}}</td>
+                                    <td>{{$pas->braucieni->pasazieru_sk}}</td>
+                                    <td>{{$pas->braucieni->piezimes}}</td>
+                                    <td><a href="{{ url('braucieni', $pas->braucieni['id']) }}">Atteikties</a></td>
                                 </tr>
                             @endforeach
                         </table>

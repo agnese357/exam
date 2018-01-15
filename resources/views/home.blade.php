@@ -13,6 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    @foreach($errors->all() as $message)
+                        <p class="has-error"><h4><b>{{ $message }}</b></h4></p>
+                    @endforeach
+
                         Latvijas mērogā nav nevienas tīmekļa vietnes vai lietotnes, kurā vienuviet būtu apkopoti vairāki maršruti un
                         līdzbraucēju sludinājumi. Nav arī iespējams kādā konkrētā veidā vienoties ar individuālajiem braucējiem par
                         sūtījuma piegādi no punkta A līdz punktam B, kas parasti notiek ar starppilsētu autobusu vadītāju vai pasta
