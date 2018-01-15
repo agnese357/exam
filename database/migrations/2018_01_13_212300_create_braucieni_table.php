@@ -21,11 +21,11 @@ class CreateBraucieniTable extends Migration
             $table->string('merkis');
             $table->decimal('cena', 5, 2);  
             $table->datetime('izbrauksana');
-            $table->integer('pasazieru sk');
+            $table->integer('pasazieru_sk');
             $table->string('piezimes', 1000);
-            
-            $table->integer('vaditaja_id')->unsigned();
-            $table->foreign('vaditaja_id')->references('id')->on('users'); 
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

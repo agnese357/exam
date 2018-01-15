@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Braucieni extends Model
 {
-    public function vaditajs() {
+    protected $table = 'braucieni';
+
+    protected $fillable = [
+        'starts', 'merkis', 'cena', 'izbrauksana', 'pasazieru_sk', 'piezimes'
+    ];
+
+    public function user() {
         return $this->belongsTo('App\User');
     }
 

@@ -19,12 +19,9 @@ class CreateAtsauksmesTable extends Migration
             $table->timestamps();
             $table->integer('vertejums');
             $table->string('komentars', 250);
-            
-            $table->integer('autors_id')->unsigned();
-            $table->foreign('autors_id')->references('id')->on('users');
 
-            $table->integer('vertetais_id')->unsigned();
-            $table->foreign('vertetais_id')->references('id')->on('users'); 
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             
         });
     }

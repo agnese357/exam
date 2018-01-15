@@ -17,11 +17,12 @@ class CreatePasazieriTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->timestamps();
-            $table->integer('brauciena_id')->unsigned();
-            $table->integer('pasaziera_id')->unsigned();
-            
-            $table->foreign('brauciena_id')->references('id')->on('braucieni'); 
-            $table->foreign('pasaziera_id')->references('id')->on('users'); 
+
+            $table->integer('braucieni_id')->unsigned();
+            $table->foreign('braucieni_id')->references('id')->on('braucieni');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

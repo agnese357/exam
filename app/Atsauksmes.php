@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Atsauksmes extends Model
 {
-    public function autors() {
-        return $this->belongsTo('App\User', 'autors_id');
-    }
+    protected $table = 'atsauksmes';
 
-    public function vertetais() {
-        return $this->belongsTo('App\User', 'vertetais_id');
+    public function user() {
+        return $this->belongsTo('App\User');
     }
 }

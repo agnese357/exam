@@ -19,8 +19,8 @@ class CreatePieturasTable extends Migration
             $table->timestamps();
             $table->string('pilseta');
             
-            $table->integer('brauciena_id')->unsigned();
-            $table->foreign('brauciena_id')->references('id')->on('braucieni'); 
+            $table->integer('braucieni_id')->unsigned();
+            $table->foreign('braucieni_id')->references('id')->on('braucieni');
         });
     }
 

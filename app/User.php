@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'vards', 'uzvards', 'apraksts',
     ];
 
     /**
@@ -27,6 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $table = 'users';
+
     public function atsauksmes() {
         return $this->hasMany('App\Atsauksmes');
     }
@@ -37,5 +39,9 @@ class User extends Authenticatable
 
     public function pasazieri() {
         return $this->hasMany('App\Pasazieri');
+    }
+
+    public function isAdmin() {
+        return ($this->role == 2);
     }
 }
