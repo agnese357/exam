@@ -26,7 +26,7 @@ class CreateBraucieniTable extends Migration
             $table->string('piezimes', 1000)->nullable();
 
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

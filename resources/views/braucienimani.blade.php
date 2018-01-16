@@ -65,7 +65,7 @@
                                     <td>{{$pas->braucieni->cena}}</td>
                                     <td>{{$pas->braucieni->pasazieru_sk}}</td>
                                     <td>{{$pas->braucieni->piezimes}}</td>
-                                    <td><a href="{{ url('braucieni', $pas->braucieni['id']) }}">Atteikties</a></td>
+                                    <td><a href="{{ url('braucieni/atteikt', $pas->braucieni['id']) }}">Atteikties</a></td>
                                 </tr>
                             @endforeach
                         </table>

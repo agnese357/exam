@@ -61,6 +61,8 @@ class BraucieniController extends Controller
         $brauciens->pasazieru_sk = $request->input('pasazieru_sk');
         $brauciens->user_id = auth()->user()->id;
         $brauciens->piezimes = $request->input('piezimes');
+        $brauciens->created_at = Carbon::now()->toDateTimeString();
+        $brauciens->updated_at = Carbon::now()->toDateTimeString();
 //        $brauciens->cover_image = $fileNameToStore;
         $brauciens->save();
 
@@ -98,7 +100,7 @@ class BraucieniController extends Controller
         $brauciens->pasazieru_sk = $request->input('pasazieru_sk');
         $brauciens->user_id = auth()->user()->id;
         $brauciens->piezimes = $request->input('piezimes');
-//        $brauciens->cover_image = $fileNameToStore;
+        $brauciens->updated_at = Carbon::now()->toDateTimeString();
         $brauciens->save();
 
         return redirect('braucieni/mani')->with('success', 'Brauciena informācija labota!');

@@ -6,18 +6,23 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h2>Lietotāja informācija</h2></div>
                     <div class="panel-body">
+                        @if(!empty($user->profila_bilde))
+                        <img style="height: 200px" src="/storage/profila_bildes/{{$user->profila_bilde}}">
+                        @endif
                        <h3>{{$user->vards}} {{$user->uzvards}}</h3>
                         <h4><b>Epasts </b>{{$user->email}}</h4>
                         <h4><b>Apraksts</b></h4>
 
-                            @if ($user->apraksts = 'NULL') <p>Apraksts nav pievienots</p>
+                            @if ($user->apraksts == 'NULL') <p>Apraksts nav pievienots</p>
                             @else <p>{{$user->apraksts}}</p>
-                                @endif
-                        @if ($user->id == auth()->user()->id)
-                            {!! Form::open(['action' => ['ProfilsController@destroy', $user->id], 'method' => 'DELETE'])!!}
-                            {{Form::submit('Dzēst profilu', ['class' => 'btn'])}}
-                            {!! Form::close() !!}
-                        @endif
+                            @endif
+
+                            @if (Auth::check() && $user->id == auth()->user()->id)
+                                <form action="/user/{{$user->id}}/labot" class="inline">
+                                    <button class="btn">Labot profilu</button>
+                                </form>
+                                <br>
+                            @endif
 
                         <h4><b>Aktīvie braucieni</b></h4>
                         @if (count($user->braucieni)== 0) <p>Lietotājam šobrīd aktīvo braucienu nav</p>
@@ -41,12 +46,34 @@
                         @endif
 
                         <h4><b>Atsauksmes</b></h4>
+                        @if(Auth::check()  && auth()->user()->id!=$user->id)
+                            {!! Form::open(['action' => ['AtsauksmesController@store', $user->id], 'method' => 'POST']) !!}
+
+                            {{ Form::label('vertejums', 'Vērtējums 1-10') }}
+                            {{ Form::number('vertejums', '', ['class' => 'form-control', 'placeholder' => 'Vērtējums']) }}
+
+                            {{ Form::label('komentars', 'Komentārs') }}
+                            {{ Form::text('komentars', '', ['class' => 'form-control', 'placeholder' => 'Komentārs']) }}
+                            {{Form::hidden('user_id', $user->id)}}
+                            {{Form::submit('Pievienot', ['class' => 'btn'])}}
+                            {!! Form::close() !!}
+                        <br>
+                        @endif
+
                         @if (count($user->atsauksmes)== 0) <p>Lietotājam šobrīd atsauksmju nav</p>
                         @else
                         <ul>
                             @foreach($user->atsauksmes as $ats)
                                 <li class="list-group-item">Vērtējums: {{$ats->vertejums}} <br>
-                                    Komentārs: {{$ats->komentars}}</li>
+                                    Komentārs: {{$ats->komentars}}
+
+                                @if (Auth::check() && auth()->user()->id==$user->id)
+                                    {!! Form::open(['action' => ['AtsauksmesController@destroy', $ats->id], 'method' => 'DELETE', 'class' => 'pull-right']) !!}
+                                    {{Form::submit('Dzēst', ['class' => 'btn'])}}
+                                    {!! Form::close() !!}
+                                @endif
+                                    <br>
+                                </li>
                             @endforeach
                         </ul>
                         @endif

@@ -21,7 +21,7 @@
                             {{ Form::date('izbrauksana_diena', \Carbon\Carbon::now()->format('Y-m-d'), ['class' => 'form-control']) }}
 
                             {{ Form::label('izbrauksana_laiks', 'Izbraukšanas laiks:') }}
-                            {{ Form::time('izbrauksana_laiks',  \Carbon\Carbon::now()->format('H:i:s'), ['class' => 'form-control']) }}
+                            {{ Form::time('izbrauksana_laiks',  \Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control']) }}
 
                             {{ Form::label('pasazieru_sk', 'Pasažieru skaits') }}
                             {{ Form::number('pasazieru_sk', '', ['class' => 'form-control', 'placeholder' => 'Pasažieru skaits']) }}
@@ -31,7 +31,7 @@
 
                         </div>
 
-                        {{Form::submit('Submit', ['class' => 'btn'])}}
+                        {{Form::submit('Pievienot', ['class' => 'btn'])}}
                         {!! Form::close() !!}
                     </div>
 

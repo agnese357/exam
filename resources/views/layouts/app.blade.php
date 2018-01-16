@@ -43,7 +43,7 @@
                             <li><a href="/user/mans">Mans profils</a></li>
                         @endif
                         @if ( !Auth::guest() && Auth::user()->isAdmin() )
-                            <li><a href="/admin">Admin</a></li>
+                            <li><a href="/admin">Administrācija</a></li>
                         @endif
                     </ul>
 
@@ -51,12 +51,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Ienākt</a></li>
+                            <li><a href="{{ route('register') }}">Reģistrēties</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    Sveicināti, {{ Auth::user()->vards }} {{ Auth::user()->uzvards }}<span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -64,7 +64,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Iziet
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

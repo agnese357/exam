@@ -20,7 +20,7 @@ class CreatePieturasTable extends Migration
             $table->string('pilseta');
             
             $table->integer('braucieni_id')->unsigned();
-            $table->foreign('braucieni_id')->references('id')->on('braucieni');
+            $table->foreign('braucieni_id')->references('id')->on('braucieni')->onDelete('cascade');
         });
     }
 

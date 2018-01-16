@@ -7,33 +7,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h3>Administrācijas modulis</h3></div>
                 <div class="panel-body">
-                    <table style="width:100%">
-                        <tr align="center">
-                            <th>Lietotājs</th>
-                            <th>Lomas maiņa</th>
-                            <th>Dzēšana</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select style="width:75%">
-                                    @foreach($users as $user)
-                                        <option value="{{$user->id}}">{{$user->vards}} {{$user->uzvards}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td>
-                                <select style="width:50%">
-                                    <option value="1">Parasts lietotājs</option>
-                                    <option value="2">Administrators</option>
-                                </select>
-                                <button>Mainīt</button>
-                            </td>
-                            <td><a href="{{ url('/mani') }}"> Dzēst</a></td>
+                    <h3>Lomas maiņa</h3>
+                    {!! Form::open(['action' => ['ProfilsController@updaterole'], 'method' => 'PUT']) !!}
 
-                        </tr>
-                    </table>
+                    {{ Form::label('email', 'Lietotāja epasts') }}
+                    {{ Form::text('email', "", ['class' => 'form-control', 'placeholder' => 'Epasts']) }}
 
-
+                    {{Form::select('role', array('1' => 'Parasts lietotājs', '2' => 'Administrators'))}}
+                    <br>
+                    {{Form::submit('Mainīt lomu', ['class' => 'btn'])}}
+                    {!! Form::close() !!}
 
                 </div>
 
