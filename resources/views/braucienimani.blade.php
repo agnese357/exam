@@ -34,8 +34,9 @@
 
                                     @endforeach
                                 </td>
-                                <td><a href="/braucieni/{{$brauc->id}}/labot"> Labot</a><br>
-
+                                <td>
+                                    <a href="/braucieni/{{$brauc->id}}/labot"> Labot</a><br>
+                                    <a href="/braucieni/{{$brauc->id}}"> Skatīt</a><br>
                                 </td>
 
                             </tr>

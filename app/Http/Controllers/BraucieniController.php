@@ -63,7 +63,6 @@ class BraucieniController extends Controller
         $brauciens->piezimes = $request->input('piezimes');
         $brauciens->created_at = Carbon::now()->toDateTimeString();
         $brauciens->updated_at = Carbon::now()->toDateTimeString();
-//        $brauciens->cover_image = $fileNameToStore;
         $brauciens->save();
 
         return redirect('braucieni/mani')->with('success', 'Brauciens pievienots!');

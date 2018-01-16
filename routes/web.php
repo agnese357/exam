@@ -32,6 +32,8 @@ Route::get('/user/{id}/labot', 'ProfilsController@edit');
 Route::get('/user/{id}', 'ProfilsController@index');
 Route::resource('user', 'ProfilsController');
 
+Route::resource('pieturas', 'PieturuController');
+
 Route::resource('atsauksmes', 'AtsauksmesController');
 
 Route::resource('pasazieri', 'PasazieriController');

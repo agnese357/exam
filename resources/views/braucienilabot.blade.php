@@ -39,10 +39,43 @@
                         {{Form::submit('Dzēst', ['class' => 'btn'])}}
                         {!! Form::close() !!}
 
+                    </div>
+                </div>
 
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h2>Pievienot pieturu</h2></div>
+                    <div class="panel-body">
+                        <h4>Pašreizējās pieturas</h4>
+                        @if (count($braucieni->pieturas)==0)
+                            <p>Šobrīd braucienam pieturu nav</p>
+                        @else
+                        <ul>
+                            @foreach ($braucieni->pieturas as $piet)
+                                <li>{{$piet->pilseta}}
+                                    {!! Form::open(['action' => ['PieturuController@destroy', $piet->id], 'method' => 'DELETE', 'class' => 'pull-right']) !!}
+                                    {{Form::submit('Dzēst', ['class' => 'btn'])}}
+                                    {!! Form::close() !!}
+                                </li>
+                            @endforeach
+                        </ul>
+                        @endif
+
+                        {!! Form::open(['action' => 'PieturuController@store', 'method' => 'POST']) !!}
+                        {{ Form::label('pietura', 'Pietura') }}
+                        {{Form::text('pietura', "", ['class' => 'form-control', 'placeholder' => 'Pietura'])}}
+                        {{Form::hidden('brauciens', $braucieni->id )}}
+                        {{Form::submit('Pievienot', ['class' => 'btn'])}}
+                        {!! Form::close() !!}
                     </div>
 
                 </div>
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
