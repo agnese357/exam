@@ -18,18 +18,11 @@ class PasazieriController extends Controller
         return redirect('braucieni/mani')->with('success', 'Pasažieris pievienots!');
     }
 
-    public function destroy($brauciena_id)
+    public function destroy($pasaziera_id)
     {
-        $search = Pasazieri::where('user_id', auth()->user()->id);
-        foreach ($search as $s)
-        {
-            if ($s->braucieni_id = $brauciena_id) $s -> delete();
-        }
+        $pasazieris = Pasazieri::find($pasaziera_id);
 
-
-
- //       $search2 = $search->with('braucieni_id', $brauciena_id);
-  //      $search2 -> delete();
+        $pasazieris -> delete();
         return redirect('braucieni/mani')->with('success', 'Pasažieris izdzēsts!');
     }
 }

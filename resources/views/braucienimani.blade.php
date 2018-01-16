@@ -65,7 +65,12 @@
                                     <td>{{$pas->braucieni->cena}}</td>
                                     <td>{{$pas->braucieni->pasazieru_sk}}</td>
                                     <td>{{$pas->braucieni->piezimes}}</td>
-                                    <td><a href="{{ url('braucieni/atteikt', $pas->braucieni['id']) }}">Atteikties</a></td>
+                                    <td>
+                                        {!! Form::open(['action' => ['PasazieriController@destroy', $pas->id], 'method' => 'DELETE', 'class' => 'pull-right']) !!}
+                                        {{Form::submit('Atteikties', ['class' => 'btn'])}}
+                                        {!! Form::close() !!}
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </table>

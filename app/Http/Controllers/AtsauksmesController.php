@@ -29,7 +29,7 @@ class AtsauksmesController extends Controller
     public function destroy($id)
     {
         $atsauksme = Atsauksmes::find($id);
-     //   $atsauksme->delete();
+        $atsauksme->delete();
 
         return redirect('user/mans')->with('success', 'Atsauksme izdzēsta!');
     }

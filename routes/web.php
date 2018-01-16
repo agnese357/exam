@@ -19,9 +19,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController');
 
-
-
-
 Route::get('/braucieni/visi', 'BraucieniController@index');
 Route::get('/braucieni/mani', 'BraucieniController@mine');
 Route::get('braucieni/jauns', 'BraucieniController@create');
@@ -29,17 +26,13 @@ Route::get('/braucieni/{id}/labot', 'BraucieniController@edit');
 Route::get('/braucieni/{id}', 'BraucieniController@show');
 Route::resource('braucieni', 'BraucieniController');
 
+Route::put('admin', 'ProfilsController@updaterole');
 Route::get('/user/mans', 'ProfilsController@show');
 Route::get('/user/{id}/labot', 'ProfilsController@edit');
 Route::get('/user/{id}', 'ProfilsController@index');
 Route::resource('user', 'ProfilsController');
 
-Route::put('admin', 'ProfilsController@updaterole');
-
-
 Route::resource('atsauksmes', 'AtsauksmesController');
 
-
-Route::get('braucieni/atteikt/{brauciena_id}', 'PasazieriController@destroy');
 Route::resource('pasazieri', 'PasazieriController');
 

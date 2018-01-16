@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('uzvards');
             $table->string('apraksts', 1000)->nullable($value = true);
             $table->string('profila_bilde')->nullable($value = true);
-            $table->integer('role')->unsigned()->default(1)->change();
             $table->rememberToken();
             $table->timestamps();
         });

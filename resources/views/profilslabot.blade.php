@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Profila labošana</div>
+                <div class="panel-heading"><h2>Profila labošana</h2></div>
                 <div class="panel-body">
                     {!! Form::open(['action' => ['ProfilsController@update', $user->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group">

@@ -20,7 +20,7 @@ class BraucieniController extends Controller
     public function index()
     {
         return view('braucienivisi',
-            array('title' => 'Visi braucieni', 'braucieni' => Braucieni::orderBy('izbrauksana_diena', 'asc')->orderBy('izbrauksana_laiks', 'asc')->get()));
+            array('braucieni' => Braucieni::orderBy('izbrauksana_diena', 'asc')->orderBy('izbrauksana_laiks', 'asc')->get()));
     }
 
     public function show($id)
