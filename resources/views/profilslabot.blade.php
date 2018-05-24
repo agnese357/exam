@@ -31,7 +31,7 @@
                         {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Parole atkārtoti']) }}
                         <br>
                         {{ Form::label('profila_bilde', 'Profila bilde') }}
-                        {{ Form::file('profila_bilde')}}
+                        {{ Form::file('profila_bilde', ['class' => 'form-control'])}}
 
 
                     </div>

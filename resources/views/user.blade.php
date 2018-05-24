@@ -67,7 +67,7 @@
                                 <li class="list-group-item">Vērtējums: {{$ats->vertejums}} <br>
                                     Komentārs: {{$ats->komentars}}
 
-                                @if (Auth::check() && auth()->user()->id==$user->id)
+                                @if ((Auth::check() && auth()->user()->id==$user->id) || auth()->user()->role == 2 )
                                     {!! Form::open(['action' => ['AtsauksmesController@destroy', $ats->id], 'method' => 'DELETE', 'class' => 'pull-right']) !!}
                                     {{Form::submit('Dzēst', ['class' => 'btn'])}}
                                     {!! Form::close() !!}

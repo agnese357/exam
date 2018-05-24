@@ -31,6 +31,6 @@ class AtsauksmesController extends Controller
         $atsauksme = Atsauksmes::find($id);
         $atsauksme->delete();
 
-        return redirect('user/mans')->with('success', 'Atsauksme izdzēsta!');
+        return redirect()->back()->with('success', 'Atsauksme izdzēsta!');
     }
 }

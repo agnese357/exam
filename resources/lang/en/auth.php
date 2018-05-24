@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Nepareizs lietotājvārds un/vai parole!',
+    'throttle' => 'Pārāk daudz ieiešanas mēģinājumu. Lūdzu mēģiniet vēlreiz pēc :seconds sekundēm!',
 
 ];
